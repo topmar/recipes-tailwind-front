@@ -31,13 +31,13 @@ export async function fetchRecipes(): Promise<Recipe[]> {
 // Function to get a single recipe by id
 export async function fetchRecipeById(id: number) {
   const url = `${API_ENDPOINT}/${id}`;
-  const response = await fetch(url);
+  const res = await fetch(url);
 
-  if (!response.ok) {
-    throw new Error(`Error HTTP status: ${response.status}`);
+  if (!res.ok) {
+    throw new Error(`Error HTTP status: ${res.status}`);
   }
 
-  const recipeData: Recipe = await response.json();
+  const recipeData: Recipe = await res.json();
 
   return recipeData;
 }
