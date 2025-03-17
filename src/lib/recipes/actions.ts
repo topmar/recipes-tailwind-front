@@ -6,7 +6,7 @@ const API_ENDPOINT = "https://dummyjson.com/recipes";
 
 // Function to fetch all recipes
 export async function fetchRecipes(): Promise<Recipe[]> {
-  const res = await fetch(API_ENDPOINT);
+  const res = await fetch(`${API_ENDPOINT}?limit=50`);
 
   if (!res.ok) {
     throw new Error(`Error HTTP status: ${res.status}`);
