@@ -1,3 +1,6 @@
+import Image from "next/image";
+import IngredientsList from "@/components/ingredients-list/ingredients-list";
+import Instructions from "@/components/instructions/instructions";
 import { fetchRecipeById } from "@/lib/recipes/actions";
 import React from "react";
 
@@ -11,7 +14,16 @@ export default async function RecipeDetailPage({
 
   return (
     <main>
-      <h1>{recipe.name}</h1>
+      {/* Page wrapper */}
+      <div className="container mx-[10rem] mt-5">
+        <h1 className="text-2xl">{recipe.name}</h1>
+        <section>
+          <IngredientsList ingredients={recipe.ingredients} />
+        </section>
+        <section>
+          <Instructions instructions={recipe.instructions} />
+        </section>
+      </div>
     </main>
   );
 }
