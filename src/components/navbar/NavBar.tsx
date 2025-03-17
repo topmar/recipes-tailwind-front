@@ -16,7 +16,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/recipes" aria-label="View recipes">
+            <Link href="/recipes" aria-label="View all recipes">
               <Button variant="ghost" size="sm" className="text-[1.5rem] w-[10rem] h-[3rem] hover:bg-orange-500">Recipes</Button>
             </Link>
           </li>
