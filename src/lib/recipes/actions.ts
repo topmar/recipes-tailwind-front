@@ -2,7 +2,6 @@
 
 import { Recipe, RecipesApiData } from "./interfaces";
 
-// TODO: when adding pagination - update this endpoint with limit and skip. Read dummyJSON docs
 const API_ENDPOINT = "https://dummyjson.com/recipes";
 
 // Function to fetch all recipes
@@ -27,4 +26,18 @@ export async function fetchRecipes(): Promise<Recipe[]> {
   }));
 
   return updatedRecipes;
+}
+
+// Function to get a single recipe by id
+export async function fetchRecipeById(id: number) {
+  const url = `${API_ENDPOINT}/${id}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Error HTTP status: ${response.status}`);
+  }
+
+  const recipeData: Recipe = await response.json();
+
+  return recipeData;
 }
