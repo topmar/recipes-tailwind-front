@@ -8,7 +8,7 @@ export default function CategoryAndMealTypeTags({
   mealType: string[];
 }) {
   return (
-    <section className="flex gap-5">
+    <section className="flex gap-5 flex-wrap">
       {tags.map((tag, index) => (
         <div
           key={index}
