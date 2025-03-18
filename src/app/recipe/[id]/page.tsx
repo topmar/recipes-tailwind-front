@@ -18,7 +18,7 @@ export default async function RecipeDetailPage({
   return (
     <main>
       {/* Page wrapper */}
-      <div className="grid grid-cols-2 mx-56">
+      <div className="grid grid-cols-2 mx-10">
         <h1 className="text-5xl font-bold col-span-2 my-10">{recipe.name}</h1>
 
         <section className="flex flex-col gap-5 bg-orange-50 p-10">
@@ -38,13 +38,15 @@ export default async function RecipeDetailPage({
 
           <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
         </section>
-
-        <Image
-          src={recipe.image}
-          width={600}
-          height={200}
-          alt={recipe.name}
-        ></Image>
+        <figure className="w-full h-full">
+          <Image
+            src={recipe.image}
+            width={1280}
+            height={1024}
+            alt={recipe.name}
+            className="w-full h-full object-cover"
+          />
+        </figure>
 
         <IngredientsList ingredients={recipe.ingredients} />
         <Instructions instructions={recipe.instructions} />
