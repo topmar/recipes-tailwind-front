@@ -34,7 +34,7 @@ export default async function RecipeDetailPage({
             mealType={recipe.mealType}
           />
 
-          <StarRating rating={recipe.rating} />
+          <StarRating rating={recipe.rating} size={25} />
 
           <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
         </section>
