@@ -12,7 +12,13 @@ const HamburgerMenu = () => {
 
   return (
     <>
-      <div className="fixed top-5 left-5 z-50 flex flex-col justify-between w-8 h-6 cursor-pointer select-none" onClick={toggleMenu}>
+      <div
+        className="fixed top-5 left-5 z-50 flex flex-col justify-between w-8 h-6 cursor-pointer select-none"
+        onClick={toggleMenu}
+        aria-label="Toggle navigation"
+        aria-expanded={isMenuOpen ? "true" : "false"}
+        aria-controls="mobile-menu"
+      >
         <div
           className={cn(
             "w-full h-1 bg-gray-800 rounded transition-transform",
@@ -38,10 +44,10 @@ const HamburgerMenu = () => {
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <Link href="/" className="text-lg font-semibold hover:underline" onClick={closeMenu}>
+        <Link href="/" className="text-lg font-semibold hover:underline" onClick={closeMenu} aria-label="Go to home page">
           <Button variant="ghost" size="sm" className="text-[1.5rem] w-[10rem] h-[3rem] hover:bg-orange-500 rounded-none">Home</Button>
         </Link>
-        <Link href="/recipes" className="text-lg font-semibold hover:underline" onClick={closeMenu}>
+        <Link href="/recipes" className="text-lg font-semibold hover:underline" onClick={closeMenu} aria-label="View all recipes">
           <Button variant="ghost" size="sm" className="text-[1.5rem] w-[10rem] h-[3rem] hover:bg-orange-500 rounded-none">Recipes</Button>
         </Link>
         <span className="border-b-2 border-gray-800 w-full"></span>
