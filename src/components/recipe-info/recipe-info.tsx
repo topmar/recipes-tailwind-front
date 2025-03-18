@@ -13,7 +13,7 @@ export default function RecipeInfo({
   difficulty: string;
 }) {
   return (
-    <div className="flex flex-col gap-3">
+    <section className="flex flex-col gap-3">
       <p className="flex gap-2">
         <Clock /> {prepTimeMinutes} mins prep time
       </p>
@@ -26,6 +26,6 @@ export default function RecipeInfo({
       <p className="flex gap-2">
         <Goal /> {difficulty} level
       </p>
-    </div>
+    </section>
   );
 }
