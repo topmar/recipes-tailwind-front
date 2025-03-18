@@ -1,10 +1,11 @@
 import Image from "next/image";
+import { fetchRecipeById } from "@/lib/recipes/actions";
 import IngredientsList from "@/components/ingredients-list/ingredients-list";
 import Instructions from "@/components/instructions/instructions";
-import { fetchRecipeById } from "@/lib/recipes/actions";
 import StarRating from "@/components/ui/rating";
 import CategoryAndMealTypeTags from "@/components/category-and-mealtype-tags/category-and-mealtypetags";
-import { Clock, CookingPot, Goal, UsersRound, Utensils } from "lucide-react";
+import RecipeDescription from "@/components/recipe-description/recipe-description";
+import RecipeInfo from "@/components/recipe-info/recipe-info";
 
 export default async function RecipeDetailPage({
   params,
@@ -21,20 +22,12 @@ export default async function RecipeDetailPage({
         <h1 className="text-5xl font-bold col-span-2 my-10">{recipe.name}</h1>
 
         <section className="flex flex-col gap-5 bg-orange-50 p-10">
-          <div className="flex flex-col gap-3">
-            <p className="flex gap-2">
-              <Clock /> {recipe.prepTimeMinutes} mins prep time
-            </p>
-            <p className="flex gap-2">
-              <CookingPot /> {recipe.cookTimeMinutes} mins cook time
-            </p>
-            <p className="flex gap-2">
-              <Utensils /> {recipe.servings} servings
-            </p>
-            <p className="flex gap-2">
-              <Goal /> {recipe.difficulty} level
-            </p>
-          </div>
+          <RecipeInfo
+            prepTimeMinutes={recipe.prepTimeMinutes}
+            cookTimeMinutes={recipe.cookTimeMinutes}
+            servings={recipe.servings}
+            difficulty={recipe.difficulty}
+          />
 
           <CategoryAndMealTypeTags
             tags={recipe.tags}
@@ -42,6 +35,8 @@ export default async function RecipeDetailPage({
           />
 
           <StarRating rating={recipe.rating} />
+
+          <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
         </section>
 
         <Image
