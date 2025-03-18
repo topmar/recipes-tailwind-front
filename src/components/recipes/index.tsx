@@ -20,7 +20,7 @@ const Recipes = async ({
   totalRecipes: number
 }) => {
   const allRecipes = await recipes
-  const limit = 8
+  const limit = 9
   const totalPages = Math.ceil(totalRecipes / limit)
   return (
     <>

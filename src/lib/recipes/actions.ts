@@ -5,11 +5,11 @@ import { Recipe, RecipesApiData } from './interfaces'
 const API_ENDPOINT = 'https://dummyjson.com/recipes'
 
 // Function to fetch all recipes
-// with limit and skip params to support pagination. Default limit is 8
+// with limit and skip params to support pagination. Default limit is 9
 
 export async function fetchRecipes(
   page: number,
-  limit: number = 8
+  limit: number = 9
 ): Promise<Recipe[]> {
   const skip = (page - 1) * limit
 

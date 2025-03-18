@@ -10,7 +10,7 @@ const RecipesList = async ({
 }) => {
   const params = await searchParams
   const page = Number(params.page) || 1
-  const limit = 8
+  const limit = 9
   const recipes = fetchRecipes(page, limit)
   const totalRecipes = 50 // All recipes from DummyJSON
 
