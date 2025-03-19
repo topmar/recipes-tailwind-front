@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react'
 
 export default function RecipeDescription({
   name,
-  cuisine,
+  cuisine
 }: {
-  name: string;
-  cuisine: string;
+  name: string
+  cuisine: string
 }) {
   return (
     <p>
-      Recipe for {name} when you're craving something from the {cuisine}{" "}
+      Recipe for {name} when you're craving something from the {cuisine}{' '}
       cuisine. Let the culinary inspiration flow.
     </p>
-  );
+  )
 }

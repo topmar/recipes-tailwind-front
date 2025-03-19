@@ -1,10 +1,10 @@
-import { ChefHat, Soup } from "lucide-react";
-import React from "react";
+import { ChefHat, Soup } from 'lucide-react'
+import React from 'react'
 
 export default function Instructions({
-  instructions,
+  instructions
 }: {
-  instructions: string[];
+  instructions: string[]
 }) {
   return (
     <section className="p-5 md:p-10 bg-orange-50">
@@ -21,5 +21,5 @@ export default function Instructions({
         <Soup size={30} /> Enjoy!
       </p>
     </section>
-  );
+  )
 }

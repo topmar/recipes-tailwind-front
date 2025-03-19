@@ -1,37 +1,37 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { fetchRecipeById } from "@/lib/recipes/actions";
-import Link from "next/link";
-import RecipeListCard from "@/components/recipes/recipe-list-card";
-import { Recipe } from "@/lib/recipes/interfaces";
-import { getRandomRecipeId } from "@/lib/utils"; // Import the helper function
+'use client'
+import { Button } from '@/components/ui/button'
+import { useState } from 'react'
+import { fetchRecipeById } from '@/lib/recipes/actions'
+import Link from 'next/link'
+import RecipeListCard from '@/components/recipes/recipe-list-card'
+import { Recipe } from '@/lib/recipes/interfaces'
+import { getRandomRecipeId } from '@/lib/utils' // Import the helper function
 
 export default function Home() {
-  const [recipeId, setRecipeId] = useState<number | null>(null);
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [recipeId, setRecipeId] = useState<number | null>(null)
+  const [recipe, setRecipe] = useState<Recipe | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const handleGenerateRecipe = async () => {
-    if (loading) return;
-    setLoading(true);
+    if (loading) return
+    setLoading(true)
 
-    const randomId = getRandomRecipeId(); // Using the helper function
-    setRecipeId(randomId);
+    const randomId = getRandomRecipeId() // Using the helper function
+    setRecipeId(randomId)
 
     try {
-      const fetchedRecipe = await fetchRecipeById(randomId);
+      const fetchedRecipe = await fetchRecipeById(randomId)
       if (fetchedRecipe) {
-        setRecipe(fetchedRecipe);
+        setRecipe(fetchedRecipe)
       } else {
-        console.error("Recipe not found");
+        console.error('Recipe not found')
       }
     } catch (error) {
-      console.error("Error fetching recipe:", error);
+      console.error('Error fetching recipe:', error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div
@@ -40,7 +40,7 @@ export default function Home() {
     >
       <h1
         className="text-4xl font-extrabold text-orange-800 drop-shadow-md px-4 py-2 rounded-lg"
-        style={{ backgroundColor: "rgba(255, 102, 0, 0.5)" }}
+        style={{ backgroundColor: 'rgba(255, 102, 0, 0.5)' }}
       >
         Awesome Recipe App
       </h1>
@@ -52,13 +52,18 @@ export default function Home() {
         Give me some food. Click on me!
       </Button>
 
-      {loading && <p className="text-orange-700 font-medium animate-pulse">Loading...</p>}
+      {loading && (
+        <p className="text-orange-700 font-medium animate-pulse">Loading...</p>
+      )}
 
       {recipe && recipeId && !loading && (
-        <Link href={`/recipe/${recipeId}`} className="block transform transition duration-300 hover:scale-105">
+        <Link
+          href={`/recipe/${recipeId}`}
+          className="block transform transition duration-300 hover:scale-105"
+        >
           <RecipeListCard recipe={recipe} />
         </Link>
       )}
     </div>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-import Image from "next/image";
-import { fetchRecipeById } from "@/lib/recipes/actions";
-import IngredientsList from "@/components/ingredients-list/ingredients-list";
-import Instructions from "@/components/instructions/instructions";
-import StarRating from "@/components/ui/rating";
-import CategoryAndMealTypeTags from "@/components/category-and-mealtype-tags/category-and-mealtypetags";
-import RecipeDescription from "@/components/recipe-description/recipe-description";
-import RecipeInfo from "@/components/recipe-info/recipe-info";
+import Image from 'next/image'
+import { fetchRecipeById } from '@/lib/recipes/actions'
+import IngredientsList from '@/components/ingredients-list/ingredients-list'
+import Instructions from '@/components/instructions/instructions'
+import StarRating from '@/components/ui/rating'
+import CategoryAndMealTypeTags from '@/components/category-and-mealtype-tags/category-and-mealtypetags'
+import RecipeDescription from '@/components/recipe-description/recipe-description'
+import RecipeInfo from '@/components/recipe-info/recipe-info'
 
 export default async function RecipeDetailPage({
-  params,
+  params
 }: {
-  params: Promise<{ id: number }>;
+  params: Promise<{ id: number }>
 }) {
-  const id = (await params).id;
-  const recipe = await fetchRecipeById(id);
+  const id = (await params).id
+  const recipe = await fetchRecipeById(id)
 
   return (
     <main>
@@ -59,5 +59,5 @@ export default async function RecipeDetailPage({
         <Instructions instructions={recipe.instructions} />
       </div>
     </main>
-  );
+  )
 }
