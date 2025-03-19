@@ -48,3 +48,21 @@ export async function fetchRecipeById(id: number) {
 
   return recipeData
 }
+
+// Function to fetch searchresults
+export async function fetchSearchResults(query: string) {
+  const url = `${API_ENDPOINT}/search?q=${query}`
+
+  if (!query.trim()) return []
+
+  try {
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`Error HTTP status: ${res.status}`)
+
+    const data = await res.json()
+    return data.recipes
+  } catch (error) {
+    console.error('Error when try fetching data:', error)
+    return []
+  }
+}
