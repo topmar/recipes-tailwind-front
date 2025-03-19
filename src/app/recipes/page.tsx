@@ -1,3 +1,4 @@
+import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 import Recipes from '@/components/recipes'
 import { SearchInput } from '@/components/search-input/search-input'
 import { fetchRecipes } from '@/lib/recipes/actions'
@@ -14,10 +15,6 @@ const RecipesList = async ({
   const limit = 9
   const recipes = fetchRecipes(page, limit)
   const totalRecipes = 50 // All recipes from DummyJSON
-
-  const LoadingSpinner = () => (
-    <LoaderCircle className="animate-spin size-20 mx-auto text-gray-500" />
-  )
 
   return (
     <article className="mt-10 mx-10">
