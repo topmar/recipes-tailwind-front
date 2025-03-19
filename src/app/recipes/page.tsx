@@ -1,4 +1,5 @@
 import Recipes from '@/components/recipes'
+import { SearchInput } from '@/components/search-input/search-input'
 import { fetchRecipes } from '@/lib/recipes/actions'
 import { LoaderCircle } from 'lucide-react'
 import { Suspense } from 'react'
@@ -20,6 +21,7 @@ const RecipesList = async ({
 
   return (
     <article className="mt-10 mx-10">
+      <SearchInput />
       <h1 className="text-4xl font-bold">All Recipes</h1>
       <Suspense fallback={<LoadingSpinner />}>
         <Recipes
