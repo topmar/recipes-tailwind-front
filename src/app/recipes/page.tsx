@@ -4,7 +4,7 @@ import { LoaderCircle } from 'lucide-react'
 import { Suspense } from 'react'
 
 const RecipesList = async ({
-  searchParams,
+  searchParams
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) => {

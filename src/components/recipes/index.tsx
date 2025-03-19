@@ -7,13 +7,13 @@ import {
   PaginationItem,
   PaginationPrevious,
   PaginationNext,
-  PaginationLink,
+  PaginationLink
 } from '@/components/ui/pagination'
 
 const Recipes = async ({
   recipes,
   currentPage,
-  totalRecipes,
+  totalRecipes
 }: {
   recipes: Promise<Recipe[]>
   currentPage: number

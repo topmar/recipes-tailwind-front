@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 export default function CategoryAndMealTypeTags({
   tags,
-  mealType,
+  mealType
 }: {
-  tags: string[];
-  mealType: string[];
+  tags: string[]
+  mealType: string[]
 }) {
   return (
     <section className="flex gap-5 flex-wrap">
@@ -27,5 +27,5 @@ export default function CategoryAndMealTypeTags({
         </div>
       ))}
     </section>
-  );
+  )
 }

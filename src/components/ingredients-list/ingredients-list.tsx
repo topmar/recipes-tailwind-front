@@ -1,10 +1,10 @@
-import { NotebookPen } from "lucide-react";
-import React from "react";
+import { NotebookPen } from 'lucide-react'
+import React from 'react'
 
 export default function IngredientsList({
-  ingredients,
+  ingredients
 }: {
-  ingredients: string[];
+  ingredients: string[]
 }) {
   return (
     <section className="p-5 md:p-10 bg-orange-100">
@@ -19,5 +19,5 @@ export default function IngredientsList({
         ))}
       </ul>
     </section>
-  );
+  )
 }

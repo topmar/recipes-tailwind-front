@@ -1,16 +1,16 @@
-import { Clock, CookingPot, Goal, Utensils } from "lucide-react";
-import React from "react";
+import { Clock, CookingPot, Goal, Utensils } from 'lucide-react'
+import React from 'react'
 
 export default function RecipeInfo({
   prepTimeMinutes,
   cookTimeMinutes,
   servings,
-  difficulty,
+  difficulty
 }: {
-  prepTimeMinutes: number;
-  cookTimeMinutes: number;
-  servings: number;
-  difficulty: string;
+  prepTimeMinutes: number
+  cookTimeMinutes: number
+  servings: number
+  difficulty: string
 }) {
   return (
     <section className="flex flex-col gap-3">
@@ -27,5 +27,5 @@ export default function RecipeInfo({
         <Goal /> {difficulty} level
       </p>
     </section>
-  );
+  )
 }

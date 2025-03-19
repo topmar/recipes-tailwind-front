@@ -29,7 +29,7 @@ export async function fetchRecipes(
   const updatedRecipes: Recipe[] = data.recipes.map((recipe) => ({
     ...recipe,
 
-    isFavourite: Boolean(false),
+    isFavourite: Boolean(false)
   }))
 
   return updatedRecipes
