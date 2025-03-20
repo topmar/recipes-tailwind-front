@@ -18,9 +18,16 @@ export default async function SearchResultPage({
     <main>
       <SearchInput />
       <div className="grid gap-10 justify-center mt-10 mx-3 sm:mx-10 xl:mx-20">
-        <h1 className="text-4xl font-bold text-center md:text-left">
-          Search results for {query}
-        </h1>
+        {recipes?.length > 0 ? (
+          <h1 className="text-4xl font-bold text-center md:text-left">
+            {recipes.length} Search results for {query}
+          </h1>
+        ) : (
+          <h1 className="text-4xl font-bold text-center md:text-left">
+            No recipes found for {query}.
+          </h1>
+        )}
+
         <Suspense fallback={<LoadingSpinner />}>
           {recipes?.length > 0 ? (
             <ul className="grid justify-center md:grid-cols-3 gap-8">
@@ -32,9 +39,7 @@ export default async function SearchResultPage({
                 </li>
               ))}
             </ul>
-          ) : (
-            <p>No recipes found for {query}.</p>
-          )}
+          ) : null}
         </Suspense>
       </div>
     </main>
