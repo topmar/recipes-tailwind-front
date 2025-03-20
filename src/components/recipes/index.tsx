@@ -1,14 +1,6 @@
 import { Recipe } from '@/lib/recipes/interfaces'
 import Link from 'next/link'
 import RecipeListCard from './recipe-list-card'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationLink
-} from '@/components/ui/pagination'
 import RecipesPagination from './recipes-pagination'
 
 const Recipes = async ({
