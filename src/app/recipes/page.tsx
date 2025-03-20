@@ -2,7 +2,6 @@ import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 import Recipes from '@/components/recipes'
 import { SearchInput } from '@/components/search-input/search-input'
 import { fetchRecipes } from '@/lib/recipes/actions'
-import { LoaderCircle } from 'lucide-react'
 import { Suspense } from 'react'
 
 const RecipesList = async ({
@@ -17,17 +16,19 @@ const RecipesList = async ({
   const totalRecipes = 50 // All recipes from DummyJSON
 
   return (
-    <article className="mt-10 mx-10">
+    <>
       <SearchInput />
-      <h1 className="text-4xl font-bold">All Recipes</h1>
-      <Suspense fallback={<LoadingSpinner />}>
-        <Recipes
-          recipes={recipes}
-          currentPage={page}
-          totalRecipes={totalRecipes}
-        />
-      </Suspense>
-    </article>
+      <article className="mt-10 mx-10">
+        <h1 className="text-4xl font-bold">All Recipes</h1>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Recipes
+            recipes={recipes}
+            currentPage={page}
+            totalRecipes={totalRecipes}
+          />
+        </Suspense>
+      </article>
+    </>
   )
 }
 
