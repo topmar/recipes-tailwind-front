@@ -38,6 +38,8 @@ const RecipesList = async ({
             recipes={recipes}
             currentPage={page}
             totalRecipes={totalRecipes}
+            sortBy={sortBy}
+            order={order}
           />
         </Suspense>
       </article>
