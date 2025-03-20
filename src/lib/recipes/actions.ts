@@ -9,11 +9,15 @@ const API_ENDPOINT = 'https://dummyjson.com/recipes'
 
 export async function fetchRecipes(
   page: number,
-  limit: number = 9
+  limit: number = 9,
+  sortBy: string = '',
+  order: string = ''
 ): Promise<Recipe[]> {
   const skip = (page - 1) * limit
 
-  const res = await fetch(`${API_ENDPOINT}?limit=${limit}&skip=${skip}`)
+  const res = await fetch(
+    `${API_ENDPOINT}?limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${order}`
+  )
 
   if (!res.ok) {
     throw new Error(`Error HTTP status: ${res.status}`)

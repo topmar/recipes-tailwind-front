@@ -13,15 +13,31 @@ import {
 const Recipes = async ({
   recipes,
   currentPage,
-  totalRecipes
+  totalRecipes,
+  sortBy,
+  order
 }: {
   recipes: Promise<Recipe[]>
   currentPage: number
   totalRecipes: number
+  sortBy?: string
+  order?: string
 }) => {
   const allRecipes = await recipes
   const limit = 9
   const totalPages = Math.ceil(totalRecipes / limit)
+
+  // Function to check if sortBy and orderParams exist, and add them to the query string if they do
+  const createPageLink = (page: number) => {
+    const params = new URLSearchParams()
+    params.set('page', page.toString()) // Update page number
+
+    // Preserve sorting params if they exist
+    if (sortBy) params.set('sortBy', sortBy)
+    if (order) params.set('order', order)
+
+    return `/recipes?${params.toString()}`
+  }
   return (
     <>
       <ul className="flex flex-wrap justify-evenly gap-8 mt-4 mx-auto">
@@ -41,7 +57,7 @@ const Recipes = async ({
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              href={`/recipes?page=${Math.max(currentPage - 1, 1)}`}
+              href={createPageLink(Math.max(currentPage - 1, 1))}
               aria-disabled={currentPage === 1}
               className={
                 currentPage === 1 ? 'pointer-events-none opacity-50' : ''
@@ -52,7 +68,7 @@ const Recipes = async ({
           {[...Array(totalPages)].map((_, i) => (
             <PaginationItem key={i}>
               <PaginationLink
-                href={`/recipes?page=${i + 1}`}
+                href={createPageLink(i + 1)}
                 isActive={currentPage === i + 1}
               >
                 {i + 1}
@@ -62,7 +78,7 @@ const Recipes = async ({
 
           <PaginationItem>
             <PaginationNext
-              href={`/recipes?page=${Math.min(currentPage + 1, totalPages)}`}
+              href={createPageLink(Math.min(currentPage + 1, totalPages))}
               aria-disabled={currentPage === totalPages}
               className={
                 currentPage === totalPages
