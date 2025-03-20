@@ -9,6 +9,7 @@ import {
   PaginationNext,
   PaginationLink
 } from '@/components/ui/pagination'
+import RecipesPagination from './recipes-pagination'
 
 const Recipes = async ({
   recipes,
@@ -49,46 +50,11 @@ const Recipes = async ({
           </li>
         ))}
       </ul>
-      {
-        // NOTE: It seems that shadcn uses the next Link component, so there is no 'disabled' property on it.
-        // setting aria-disabled and using Tailwind classes conditionally seems to be an okay workaround.
-      }
-      <Pagination className="my-8">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={createPageLink(Math.max(currentPage - 1, 1))}
-              aria-disabled={currentPage === 1}
-              className={
-                currentPage === 1 ? 'pointer-events-none opacity-50' : ''
-              }
-            />
-          </PaginationItem>
-
-          {[...Array(totalPages)].map((_, i) => (
-            <PaginationItem key={i}>
-              <PaginationLink
-                href={createPageLink(i + 1)}
-                isActive={currentPage === i + 1}
-              >
-                {i + 1}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-
-          <PaginationItem>
-            <PaginationNext
-              href={createPageLink(Math.min(currentPage + 1, totalPages))}
-              aria-disabled={currentPage === totalPages}
-              className={
-                currentPage === totalPages
-                  ? 'pointer-events-none opacity-50'
-                  : ''
-              }
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <RecipesPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        createPageLink={createPageLink}
+      />
     </>
   )
 }
