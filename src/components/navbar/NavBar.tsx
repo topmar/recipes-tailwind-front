@@ -1,0 +1,64 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import HamburgerMenu from '../ui/hamburger'
+import { usePathname } from 'next/navigation'
+
+const NavBar = () => {
+  const pathname = usePathname()
+  return (
+    <nav
+      className="bg-orange-400 p-2 border-b-2 border-b-orange-500"
+      aria-label="Main navigation"
+    >
+      <div className="container mx-auto flex justify-between items-end">
+        {/* mobile */}
+        <div className="md:hidden">
+          <HamburgerMenu />
+        </div>
+        <Link href="/" aria-label="Home page">
+          <Image
+            src="/awesome-recipes-logo.svg"
+            alt="logo"
+            width={0}
+            height={0}
+            className="w-20 min-[768px]:w-40"
+          />
+        </Link>
+        {/* menu for desktop */}
+        <ul className="hidden md:flex space-x-4 gap-0">
+          <li>
+            <Link
+              href="/"
+              aria-label="Go to home page"
+              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 rounded-t-lg ${
+                pathname === '/' ? 'bg-orange-500' : ''
+              }`}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/recipes"
+              aria-label="View all recipes"
+              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 rounded-t-lg ${
+                pathname.includes('/recipes') ? 'bg-orange-500' : ''
+              }`}
+            >
+              Recipes
+            </Link>
+          </li>
+        </ul>
+        <span className="hidden md:block hover:text-white">
+          <Link href="/login" aria-label="Log in to your account">
+            Log in
+          </Link>
+        </span>
+      </div>
+    </nav>
+  )
+}
+
+export default NavBar
