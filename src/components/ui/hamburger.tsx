@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Button } from './button'
 import { Separator } from '@/components/ui/separator'
 
 const HamburgerMenu = () => {
