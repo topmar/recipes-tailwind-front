@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Button } from './button'
+import { Separator } from '@/components/ui/separator'
 
 const HamburgerMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,7 +14,7 @@ const HamburgerMenu = () => {
   return (
     <>
       <div
-        className="fixed top-5 left-5 z-50 flex flex-col justify-between w-8 h-6 cursor-pointer select-none"
+        className="absolute top-5 left-5 flex flex-col justify-between w-8 h-6 cursor-pointer select-none"
         onClick={toggleMenu}
         aria-label="Toggle navigation"
         aria-expanded={isMenuOpen ? 'true' : 'false'}
@@ -40,47 +41,33 @@ const HamburgerMenu = () => {
       </div>
       <div
         className={cn(
-          'fixed top-16 left-0 w-40 h-55 bg-white shadow-lg p-5 flex flex-col items-center space-y-4 transform transition-transform',
+          'absolute top-17 left-0 w-40  shadow-lg p-5 flex flex-col items-center space-y-4 transform transition-transform z-50 bg-orange-50',
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         <Link
           href="/"
-          className="text-lg font-semibold hover:underline"
+          className="text-2xl font-semibold "
           onClick={closeMenu}
           aria-label="Go to home page"
         >
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-[1.5rem] w-[10rem] h-[3rem] hover:bg-orange-500 rounded-none"
-          >
-            Home
-          </Button>
+          Home
         </Link>
         <Link
           href="/recipes"
-          className="text-lg font-semibold hover:underline"
+          className="text-2xl font-semibold"
           onClick={closeMenu}
           aria-label="View all recipes"
         >
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-[1.5rem] w-[10rem] h-[3rem] hover:bg-orange-500 rounded-none"
-          >
-            Recipes
-          </Button>
+          Recipes
         </Link>
-        <span className="border-b-2 border-gray-800 w-full"></span>
-        <Link href="/login" aria-label="Log in to your account">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-[1.3rem] w-[10rem] h-[3rem] hover:bg-orange-500 rounded-none"
-          >
-            Log in
-          </Button>
+        <Separator />
+        <Link
+          href="/login"
+          className="text-xl"
+          aria-label="Log in to your account"
+        >
+          Log in
         </Link>
       </div>
     </>
