@@ -28,9 +28,7 @@ const RecipesList = async ({
       <SearchInput />
       <article className="mt-10 mx-10">
         <h1 className="text-4xl font-bold">All Recipes</h1>
-        <section className="flex justify-between mt-4 mx-1">
-          {/* The filter button is just a placeholder for layout purposes for now */}
-          <Button>Filter</Button>
+        <section className="flex justify-end mt-4 mx-1">
           <SortDropdown />
         </section>
         <Suspense fallback={<LoadingSpinner />}>
