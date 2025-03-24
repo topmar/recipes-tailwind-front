@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Recipe } from '@/lib/recipes/interfaces'
 import { getRandomRecipeId } from '@/lib/utils'
 import RecipeDescription from '@/components/recipe-description/recipe-description'
+import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 
 export default function Home() {
   const [recipeId, setRecipeId] = useState<number | null>(null)
@@ -48,9 +49,7 @@ export default function Home() {
       >
         Give me some food. Click on me!
       </Button>
-      {loading && (
-        <p className="text-orange-700 font-medium animate-pulse">Loading...</p>
-      )}
+      {loading && <LoadingSpinner />}
       {recipe && recipeId && !loading && (
         <Link
           href={`/recipe/${recipeId}`}
@@ -72,7 +71,9 @@ export default function Home() {
                 {recipe?.name || 'Recipe Name'}
               </h1>
               <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
-              <span className="text-blue-600 underline hover:text-blue-800 transition-colors cursor-pointer"> Read More</span>
+              <span className="text-blue-600 underline hover:text-blue-800 transition-colors cursor-pointer">
+                Read More
+              </span>
             </section>
           </div>
         </Link>
