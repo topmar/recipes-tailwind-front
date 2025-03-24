@@ -56,7 +56,7 @@ export default function Home() {
           href={`/recipe/${recipeId}`}
           className="w-full max-w-5xl mt-6 transform transition duration-300 hover:scale-105"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-3 sm:mx-10 xl:mx-20 bg-white rounded-lg overflow-hidden shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 mx-3 sm:mx-10 xl:mx-20 bg-white rounded-lg overflow-hidden shadow-lg">
             <figure className="w-full">
               <Image
                 src={recipe?.image || '/images/placeholder.jpg'}
@@ -72,6 +72,7 @@ export default function Home() {
                 {recipe?.name || 'Recipe Name'}
               </h1>
               <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
+              <span className="text-blue-600 underline hover:text-blue-800 transition-colors cursor-pointer"> Read More</span>
             </section>
           </div>
         </Link>
