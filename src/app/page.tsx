@@ -33,22 +33,22 @@ export default function Home() {
   }
 
   return (
-    <main className="relative min-h-screen flex flex-col items-center pt-4 sm:pt-8 p-4 sm:p-6 md:p-8 before:absolute before:inset-0 before:bg-black/60 md:before:bg-transparent before:z-0">
-      <div
-        className="absolute inset-0 bg-cover bg-center z-[-1]"
-        style={{ backgroundImage: "url('/images/food-background.jpg')" }}
-      ></div>
-      <div className="relative z-10 w-screen -mx-4 sm:-mx-8 lg:-mx-12 flex justify-center -mt-4 sm:-mt-6">
-        <h1 className="w-screen text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-orange-900 drop-shadow-md px-4 py-6 bg-orange-800/70">
+    <main
+      className="relative min-h-screen flex flex-col items-center pt-4 sm:pt-8 p-4 sm:p-6 md:p-8 bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/food-background.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="relative z-10 flex flex-col items-center">
+        <h1 className="w-screen text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-orange-900 drop-shadow-md px-4 py-6 bg-orange-700/70 -mt-4 sm:-mt-8">
           Awesome Recipe App
         </h1>
+        <Button
+          onClick={handleGenerateRecipe}
+          className="mt-6 px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-2xl bg-orange-700/50 text-white rounded-xl shadow-xl transition-all hover:bg-orange-800/70 hover:scale-105"
+        >
+          Give me some food. Click on me!
+        </Button>
       </div>
-      <Button
-        onClick={handleGenerateRecipe}
-        className="relative z-10 mt-6 px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-2xl bg-orange-800/50 text-white rounded-xl shadow-xl transition-all hover:bg-orange-800/70 hover:scale-105"
-      >
-        Give me some food. Click on me!
-      </Button>
       {loading && <LoadingSpinner />}
       {recipe && recipeId && !loading && (
         <Link
