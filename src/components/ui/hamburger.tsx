@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Separator } from '@/components/ui/separator'
+import LoginButton from '../Login-button/LoginButton'
 
 const HamburgerMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -61,13 +62,9 @@ const HamburgerMenu = () => {
           Recipes
         </Link>
         <Separator />
-        <Link
-          href="/login"
-          className="text-xl"
-          aria-label="Log in to your account"
-        >
-          Log in
-        </Link>
+        <span onClick={closeMenu}>
+          <LoginButton />
+        </span>
       </div>
     </>
   )
