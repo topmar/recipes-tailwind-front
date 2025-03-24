@@ -56,12 +56,13 @@ export async function fetchRecipeById(id: number) {
 // Function to fetch searchresults
 export async function fetchSearchResults(
   query: string,
-  limit: number,
-  skip: number
+  page?: number,
+  limit?: number
 ) {
-  const url = `${API_ENDPOINT}/search?q=${query}limit=${limit}&skip=${skip}`
+  const skip = ((page ?? 1) - 1) * (limit ?? 10)
+  const url = `${API_ENDPOINT}/search?q=${query}&skip=${skip}`
 
-  if (!query.trim()) return []
+  // if (!query.trim()) return []
 
   try {
     const res = await fetch(url)

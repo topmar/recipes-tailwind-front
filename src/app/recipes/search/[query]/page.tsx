@@ -1,45 +1,24 @@
 import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
-import RecipeListCard from '@/components/recipes/recipe-list-card'
-import { SearchInput } from '@/components/search-input/search-input'
-import { fetchSearchResults } from '@/lib/recipes/actions'
-import { Recipe } from '@/lib/recipes/interfaces'
-import Link from 'next/link'
+import { Search } from '@/components/search/search'
 import { Suspense } from 'react'
+import SearchResult from '@/components/search/search-result'
 
-export default async function SearchResultPage({
-  params
-}: {
-  params: Promise<{ query: string }>
+export default async function SearchResultsPage(props: {
+  searchParams?: Promise<{
+    query?: string
+    page?: string
+  }>
 }) {
-  const query = (await params).query
-  const recipes = await fetchSearchResults(query)
+  const searchParams = await props.searchParams
+  const query = searchParams?.query || ''
+  const currentPage = Number(searchParams?.page) || 1
 
   return (
     <main>
-      <SearchInput />
+      <Search placeholder="Search recipes..." />
       <div className="grid gap-10 justify-center mt-10 mx-3 sm:mx-10 xl:mx-20">
-        {recipes?.length > 0 ? (
-          <h1 className="text-4xl font-bold text-center md:text-left">
-            {recipes.length} Search results for {query}
-          </h1>
-        ) : (
-          <h1 className="text-4xl font-bold text-center md:text-left">
-            No recipes found for {query}.
-          </h1>
-        )}
-
-        <Suspense fallback={<LoadingSpinner />}>
-          {recipes?.length > 0 ? (
-            <ul className="grid justify-center md:grid-cols-3 gap-8">
-              {recipes.map((recipe: Recipe) => (
-                <li key={recipe.id}>
-                  <Link href={`/recipe/${recipe.id}`}>
-                    <RecipeListCard recipe={recipe} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : null}
+        <Suspense key={query + currentPage} fallback={<LoadingSpinner />}>
+          <SearchResult query={query} currentPage={currentPage} />
         </Suspense>
       </div>
     </main>

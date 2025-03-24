@@ -1,7 +1,6 @@
 import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 import Recipes from '@/components/recipes'
-import { SearchInput } from '@/components/search-input/search-input'
-import { Button } from '@/components/ui/button'
+import { Search } from '@/components/search/search'
 import SortDropdown from '@/components/ui/sort-dropdown'
 import { fetchRecipes } from '@/lib/recipes/actions'
 import { Suspense } from 'react'
@@ -25,7 +24,7 @@ const RecipesList = async ({
 
   return (
     <>
-      <SearchInput />
+      <Search placeholder="Search recipes..." />
       <article className="mt-10 mx-10">
         <h1 className="text-4xl font-bold">All Recipes</h1>
         <section className="flex justify-end mt-4 mx-1">
