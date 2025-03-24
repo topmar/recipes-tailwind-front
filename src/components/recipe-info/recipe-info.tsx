@@ -1,5 +1,6 @@
 import { Clock, CookingPot, Goal, Utensils } from 'lucide-react'
 import React from 'react'
+import WakeLockSwitch from '../wake-lock-switch/wake-lock-switch'
 
 export default function RecipeInfo({
   prepTimeMinutes,
@@ -26,6 +27,7 @@ export default function RecipeInfo({
       <p className="flex gap-2">
         <Goal /> {difficulty} level
       </p>
+      <WakeLockSwitch />
     </section>
   )
 }
