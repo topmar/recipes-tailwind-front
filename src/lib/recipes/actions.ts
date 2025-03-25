@@ -4,9 +4,17 @@ import { Recipe, RecipesApiData } from './interfaces'
 
 const API_ENDPOINT = 'https://dummyjson.com/recipes'
 
+// Fetching all recipes from dummyJSON without pagination
+export async function fetchAllRecipes() {
+  const limit = 50
+  const res = await fetch(`${API_ENDPOINT}?limit=${limit}`)
+  const data = await res.json()
+  console.log(data.total)
+  return data.total // Total amount of recipes
+}
+
 // Function to fetch all recipes
 // with limit and skip params to support pagination. Default limit is 9
-
 export async function fetchRecipes(
   page: number,
   limit: number = 9,
@@ -60,7 +68,7 @@ export async function fetchSearchResults(
   limit?: number
 ) {
   const skip = ((page ?? 1) - 1) * (limit ?? 10)
-  const url = `${API_ENDPOINT}/search?q=${query}&skip=${skip}`
+  const url = `${API_ENDPOINT}/search?q=${query}&limit=${limit}&skip=${skip}`
 
   // if (!query.trim()) return []
 

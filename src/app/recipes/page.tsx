@@ -2,7 +2,11 @@ import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 import Recipes from '@/components/recipes'
 import { SearchRecipes } from '@/components/search/search-recipes'
 import SortDropdown from '@/components/ui/sort-dropdown'
-import { fetchRecipes, fetchSearchResults } from '@/lib/recipes/actions'
+import {
+  fetchAllRecipes,
+  fetchRecipes,
+  fetchSearchResults
+} from '@/lib/recipes/actions'
 import { Suspense } from 'react'
 
 const RecipesList = async ({
@@ -20,26 +24,28 @@ const RecipesList = async ({
     ? params.order[0]
     : params.order || undefined
 
-  // const recipes = fetchRecipes(page, limit, sortBy, order)
-
   // query from search
   const query = params.query ? String(params.query) : ''
 
   let recipes
+  let totalRecipes
 
   if (query) {
-    recipes = await fetchSearchResults(query) // Get search result based on query
+    recipes = await fetchSearchResults(query, page, limit) // Get search result based on query
+    totalRecipes = recipes.length
   } else {
     recipes = await fetchRecipes(page, limit, sortBy, order) // If no query, show all recipes
+    totalRecipes = await fetchAllRecipes()
   }
-
-  const totalRecipes = 50 // All recipes from DummyJSON
 
   return (
     <>
       <SearchRecipes placeholder="Search recipes..." />
       <article className="mt-10 mx-10">
-        <h1 className="text-4xl font-bold">All Recipes</h1>
+        {/* Dynamic heading depending on search results or all recipes are shown */}
+        <h1 className="text-4xl font-bold">
+          {query ? `${totalRecipes} search result for ${query}` : 'All Recipes'}
+        </h1>
         <section className="flex justify-end mt-4 mx-1">
           <SortDropdown />
         </section>

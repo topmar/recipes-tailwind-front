@@ -22,7 +22,7 @@ export function SearchRecipes({ placeholder }: { placeholder: string }) {
     }
     //As the user types into the search bar, params.toString() translates this input into a URL-friendly format.
     replace(`${pathname}?${params.toString()}`)
-  }, 500)
+  }, 300)
 
   return (
     <div className="relative w-full h-75 flex justify-center items-center mt-0 bg-[url('/images/search-bg.png')] bg-cover bg-bottom bg-no-repeat rounded-b-[95px]">
@@ -39,9 +39,8 @@ export function SearchRecipes({ placeholder }: { placeholder: string }) {
               handleSearch(e.target.value)
             }}
             defaultValue={searchParams.get('query')?.toString()}
-            className="relative rounded-r-none rounded-l-full bg-background border-orange-500 peer block w-full rounded-md border py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+            className="relative rounded-r-none rounded-l-full bg-background border-orange-500 peer block w-full rounded-md border py-[9px] text-sm outline-2 placeholder:text-gray-500"
           />
-
           <SearchIcon className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
         </div>
       </section>
