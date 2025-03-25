@@ -32,7 +32,10 @@ export function SearchInput() {
   return (
     <div className="relative w-full h-75 flex justify-center items-center mt-0 bg-[url('/images/search-bg.png')] bg-cover bg-bottom bg-no-repeat rounded-b-[95px]">
       <section className="flex flex-col gap-3 w-full max-w-sm justify-center items-center mx-auto mb-20 p-5 rounded-2xl">
-        <label htmlFor="search" className="text-2xl font-bold text-background">
+        <label
+          htmlFor="search"
+          className="text-2xl font-sembold text-background"
+        >
           Search for recipes
         </label>
         <div className="flex w-full">
