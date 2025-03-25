@@ -2,38 +2,27 @@
 
 import { SearchIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 
-export function Search({ placeholder }: { placeholder: string }) {
+export function SearchRecipes({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams()
+  const pathname = usePathname()
   const { replace } = useRouter()
 
   const handleSearch = useDebouncedCallback((term) => {
-    console.log(`Searching... ${term}`)
-
     // Manipulating the URL query parameters
     const params = new URLSearchParams(searchParams)
     // Set the params string based on the user’s input. If the input is empty, delete it
     if (term) {
       params.set('query', term)
-      params.delete('offset') //reset pagination
-
-      //As the user types into the search bar, params.toString() translates this input into a URL-friendly format.
-      replace(
-        `/recipes/search/${encodeURIComponent(term)}?${params.toString()}`
-      )
+      params.delete('page') //reset pagination
     } else {
       params.delete('query')
-      replace(`/recipes/search`)
     }
-  }, 300)
-
-  // const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.key === 'Enter') {
-  //     handleSearch()
-  //   }
-  // }
+    //As the user types into the search bar, params.toString() translates this input into a URL-friendly format.
+    replace(`${pathname}?${params.toString()}`)
+  }, 500)
 
   return (
     <div className="relative w-full h-75 flex justify-center items-center mt-0 bg-[url('/images/search-bg.png')] bg-cover bg-bottom bg-no-repeat rounded-b-[95px]">
@@ -50,7 +39,6 @@ export function Search({ placeholder }: { placeholder: string }) {
               handleSearch(e.target.value)
             }}
             defaultValue={searchParams.get('query')?.toString()}
-            // onKeyDown={handleKeyDown}
             className="relative rounded-r-none rounded-l-full bg-background border-orange-500 peer block w-full rounded-md border py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
           />
 

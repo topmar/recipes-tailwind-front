@@ -8,15 +8,18 @@ const Recipes = async ({
   currentPage,
   totalRecipes,
   sortBy,
-  order
+  order,
+  query
 }: {
   recipes: Promise<Recipe[]>
   currentPage: number
   totalRecipes: number
   sortBy?: string
   order?: string
+  query?: string
 }) => {
   const allRecipes = await recipes
+
   const limit = 9
   const totalPages = Math.ceil(totalRecipes / limit)
 

@@ -1,8 +1,8 @@
 import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 import Recipes from '@/components/recipes'
-import { Search } from '@/components/search/search'
+import { SearchRecipes } from '@/components/search/search-recipes'
 import SortDropdown from '@/components/ui/sort-dropdown'
-import { fetchRecipes } from '@/lib/recipes/actions'
+import { fetchRecipes, fetchSearchResults } from '@/lib/recipes/actions'
 import { Suspense } from 'react'
 
 const RecipesList = async ({
@@ -19,12 +19,25 @@ const RecipesList = async ({
   const order = Array.isArray(params.order)
     ? params.order[0]
     : params.order || undefined
-  const recipes = fetchRecipes(page, limit, sortBy, order)
+
+  // const recipes = fetchRecipes(page, limit, sortBy, order)
+
+  // query from search
+  const query = params.query ? String(params.query) : ''
+
+  let recipes
+
+  if (query) {
+    recipes = await fetchSearchResults(query) // Get search result based on query
+  } else {
+    recipes = await fetchRecipes(page, limit, sortBy, order) // If no query, show all recipes
+  }
+
   const totalRecipes = 50 // All recipes from DummyJSON
 
   return (
     <>
-      <Search placeholder="Search recipes..." />
+      <SearchRecipes placeholder="Search recipes..." />
       <article className="mt-10 mx-10">
         <h1 className="text-4xl font-bold">All Recipes</h1>
         <section className="flex justify-end mt-4 mx-1">
@@ -37,6 +50,7 @@ const RecipesList = async ({
             totalRecipes={totalRecipes}
             sortBy={sortBy}
             order={order}
+            query={query}
           />
         </Suspense>
       </article>
