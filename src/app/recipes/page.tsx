@@ -44,7 +44,11 @@ const RecipesList = async ({
       <article className="mt-10 mx-10">
         {/* Dynamic heading depending on search results or all recipes are shown */}
         <h1 className="text-4xl font-bold">
-          {query ? `${totalRecipes} search result for ${query}` : 'All Recipes'}
+          {query
+            ? `${totalRecipes} search result${
+                totalRecipes === 1 ? '' : 's'
+              } for ${query}`
+            : 'All Recipes'}
         </h1>
         <section className="flex justify-end mt-4 mx-1">
           <SortDropdown />
