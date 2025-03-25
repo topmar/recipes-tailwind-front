@@ -31,7 +31,7 @@ const RecipesList = async ({
   let totalRecipes
 
   if (query) {
-    recipes = await fetchSearchResults(query, page, limit) // Get search result based on query
+    recipes = await fetchSearchResults(query, page, limit, sortBy, order) // Get search result based on query
     totalRecipes = recipes.length
   } else {
     recipes = await fetchRecipes(page, limit, sortBy, order) // If no query, show all recipes

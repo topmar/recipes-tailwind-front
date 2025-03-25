@@ -64,13 +64,14 @@ export async function fetchRecipeById(id: number) {
 // Function to fetch searchresults
 export async function fetchSearchResults(
   query: string,
-  page?: number,
-  limit?: number
+  page: number,
+  limit: number,
+  sortBy: string = '',
+  order: string = ''
 ) {
-  const skip = ((page ?? 1) - 1) * (limit ?? 10)
-  const url = `${API_ENDPOINT}/search?q=${query}&limit=${limit}&skip=${skip}`
-
-  // if (!query.trim()) return []
+  const skip = (page - 1) * limit
+  // const skip = ((page ?? 1) - 1) * (limit ?? 10)
+  const url = `${API_ENDPOINT}/search?q=${query}&limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${order}`
 
   try {
     const res = await fetch(url)
