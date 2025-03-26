@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Profiles from './profiles'
+import LightSwitch from '../light-switch/light-switch'
 
 const Footer = () => {
   return (
@@ -27,7 +28,7 @@ const Footer = () => {
             <Link href="https://www.linkedin.com/in/marcintopolski/">
               <Profiles initials="MT" />
             </Link>
-            <Link href="#">
+            <Link href="https://www.linkedin.com/in/parvinshafiee/">
               <Profiles initials="PM" />
             </Link>
             <Link href="https://www.linkedin.com/in/sandra-h%C3%B6st-kannerberg/">
@@ -47,7 +48,9 @@ const Footer = () => {
               <Link href={'/login'}>Log in</Link>
             </li>
           </ul>
-          <div className="self-end mt-4">Dark mode</div>
+          <div className="self-end mt-4">
+            <LightSwitch />
+          </div>
         </section>
       </div>
     </article>

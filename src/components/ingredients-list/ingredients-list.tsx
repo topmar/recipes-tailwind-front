@@ -7,7 +7,7 @@ export default function IngredientsList({
   ingredients: string[]
 }) {
   return (
-    <section className="p-5 md:p-10 bg-orange-100">
+    <section className="p-5 md:p-10 bg-orange-100 dark:bg-orange-950">
       <h2 className="flex items-center gap-3 text-3xl font-bold mb-5">
         <NotebookPen /> Ingredients
       </h2>

@@ -48,7 +48,7 @@ const WakeLockSwitch = () => {
   return (
     <div className="mt-5 flex items-center">
       <Switch
-        className="data-[state=checked]:bg-orange-400 data-[state=unchecked]:bg-orange-200 mr-3 data-[state=unchecked]:disabled:bg-gray-300"
+        className="data-[state=checked]:bg-orange-400 dark:data-[state=checked]:bg-orange-700 data-[state=unchecked]:bg-orange-200 mr-3 data-[state=unchecked]:disabled:bg-gray-300"
         onCheckedChange={(checked) => handleChange(checked)}
         disabled={disabled}
         id="toggle-cook-mode"

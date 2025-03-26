@@ -4,6 +4,7 @@ import './globals.css'
 import NavBar from '../components/navbar/NavBar'
 import { SessionProvider } from 'next-auth/react'
 import Footer from '@/components/footer/footer'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const lora = Lora({
   variable: '--font-lora',
@@ -22,11 +23,18 @@ export default function RootLayout({
 }>) {
   return (
     <SessionProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={`${lora.variable} antialiased font-primary`}>
-          <NavBar />
-          {children}
-          <Footer />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavBar />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </SessionProvider>
