@@ -2,7 +2,7 @@
 
 import { Monitor, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 const LightSwitch = () => {
   const { theme, setTheme } = useTheme()
@@ -21,6 +21,9 @@ const LightSwitch = () => {
     { id: 'dark', icon: <Moon size={17} strokeWidth={1.5} /> },
     { id: 'system', icon: <Monitor size={17} strokeWidth={1.5} /> }
   ]
+  const handleThemeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTheme(e.target.id)
+  }
   return (
     <section className="mt-1 flex w-fit justify-center rounded-sm bg-orange-800">
       {lightSwitches.map(({ id, icon }) => (
@@ -30,7 +33,7 @@ const LightSwitch = () => {
             id={id}
             name="theme-select"
             className="peer hidden"
-            onChange={() => setTheme(id)}
+            onChange={handleThemeChange}
             checked={theme === id}
           />
           <label
