@@ -58,9 +58,7 @@ const WakeLockSwitch = () => {
         {disabled ? (
           <p className="text-sm">Cook mode unavailable on this browser</p>
         ) : (
-          <p>
-            <strong>Cook mode</strong> (keep screen awake)
-          </p>
+          <p className="font-bold">Cook mode (keep screen awake)</p>
         )}
       </label>
     </div>
