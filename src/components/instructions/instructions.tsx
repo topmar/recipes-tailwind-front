@@ -7,7 +7,7 @@ export default function Instructions({
   instructions: string[]
 }) {
   return (
-    <section className="p-5 md:p-10 bg-orange-50">
+    <section className="p-5 md:p-10 bg-orange-50 dark:bg-orange-900">
       <h2 className="flex items-center gap-3 text-3xl font-bold mb-5">
         <ChefHat size={30} />
         Instructions

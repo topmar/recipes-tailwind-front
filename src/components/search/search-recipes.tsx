@@ -27,7 +27,10 @@ export function SearchRecipes({ placeholder }: { placeholder: string }) {
   return (
     <div className="relative w-full h-75 flex justify-center items-center mt-0 bg-[url('/images/search-bg.png')] bg-cover bg-bottom bg-no-repeat rounded-b-[95px]">
       <section className="flex flex-col gap-3 w-full max-w-sm justify-center items-center mx-auto mb-20 p-5 rounded-2xl">
-        <label htmlFor="search" className="text-2xl font-bold text-background">
+        <label
+          htmlFor="search"
+          className="text-2xl font-bold text-background dark:text-foreground"
+        >
           Search for recipes
         </label>
         <div className="relative flex w-full">
@@ -39,7 +42,7 @@ export function SearchRecipes({ placeholder }: { placeholder: string }) {
               handleSearch(e.target.value)
             }}
             defaultValue={searchParams.get('query')?.toString()}
-            className="relative rounded-r-none rounded-l-full bg-background border-orange-500 peer block w-full rounded-md border py-[9px] text-sm outline-2 placeholder:text-gray-500"
+            className="relative rounded-r-none rounded-l-full bg-background border-orange-500 peer block w-full rounded-md border py-[9px] text-sm outline-2 placeholder:text-gray-500 dark:bg-foreground dark:text-black"
           />
           <SearchIcon className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
         </div>
