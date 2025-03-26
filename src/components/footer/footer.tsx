@@ -5,7 +5,7 @@ import LightSwitch from '../light-switch/light-switch'
 
 const Footer = () => {
   return (
-    <article className="bg-orange-700 text-white w-full">
+    <article className="bg-orange-700 text-white w-full mt-24">
       <div className="w-full flex flex-wrap justify-between py-8 min-[574px]:px-24 px-16">
         <section className="max-w-md flex-flex-col">
           <Image
