@@ -39,7 +39,7 @@ export default function Home() {
     >
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="relative z-10 flex flex-col items-center">
-        <h1 className="w-screen text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-orange-900 drop-shadow-md px-4 py-6 bg-orange-700/70 -mt-4 sm:-mt-8">
+        <h1 className="w-screen text-center text-3xl sm:text-4xl lg:text-5xl font-semibold text-orange-900 drop-shadow-md px-4 py-6 bg-orange-700/70 -mt-4 sm:-mt-8">
           Awesome Recipe App
         </h1>
         <Button
@@ -67,9 +67,9 @@ export default function Home() {
               />
             </figure>
             <section className="flex flex-col p-4 sm:p-6 md:p-8 bg-orange-50">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">
                 {recipe?.name || 'Recipe Name'}
-              </h1>
+              </h2>
               <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
               <span className="text-blue-600 underline hover:text-blue-800 transition-colors cursor-pointer">
                 Read More
