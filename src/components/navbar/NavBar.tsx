@@ -4,9 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import HamburgerMenu from '../ui/hamburger'
 import { usePathname } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import LoginButton from '../Login-button/LoginButton'
 
 const NavBar = () => {
   const pathname = usePathname()
+  const { data: session } = useSession()
+
+
   return (
     <nav
       className="bg-orange-400 p-2 border-b-2 border-b-orange-500"
@@ -51,10 +56,8 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
-        <span className="hidden md:block hover:text-white">
-          <Link href="/login" aria-label="Log in to your account">
-            Log in
-          </Link>
+        <span className="hidden md:block">
+          <LoginButton />
         </span>
       </div>
     </nav>
