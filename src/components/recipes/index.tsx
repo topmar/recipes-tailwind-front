@@ -39,9 +39,7 @@ const Recipes = async ({
       <ul className="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allRecipes.map((recipe) => (
           <li key={recipe.id}>
-            <Link href={`/recipe/${recipe.id}`}>
               <RecipeListCard recipe={recipe} />
-            </Link>
           </li>
         ))}
       </ul>

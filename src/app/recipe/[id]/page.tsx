@@ -6,6 +6,7 @@ import StarRating from '@/components/ui/rating'
 import CategoryAndMealTypeTags from '@/components/category-and-mealtype-tags/category-and-mealtypetags'
 import RecipeDescription from '@/components/recipe-description/recipe-description'
 import RecipeInfo from '@/components/recipe-info/recipe-info'
+import FavoriteButton from '@/components/ui/favorite-button'
 
 export default async function RecipeDetailPage({
   params
@@ -19,10 +20,11 @@ export default async function RecipeDetailPage({
     <main>
       {/* Page wrapper */}
       <div className="grid md:grid-cols-2 mx-3 sm:mx-10 xl:mx-56">
-        <h1 className="text-4xl text-center md:text-5xl font-semibold my-10 md:col-span-2">
-          {recipe.name}
-        </h1>
-
+        <div className="flex justify-between items-center md:col-span-2 my-10">
+          <h1 className="text-4xl text-center md:text-5xl font-semibold my-10 md:col-span-2">{recipe.name}</h1>
+          <FavoriteButton recipeId={recipe.id} />
+        </div>
+        
         <section className="flex flex-col gap-10 p-5 md:p-10 bg-orange-50 md:row-start-2 md:col-start-1">
           <RecipeInfo
             prepTimeMinutes={recipe.prepTimeMinutes}
