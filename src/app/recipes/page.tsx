@@ -43,7 +43,7 @@ const RecipesList = async ({
       <SearchRecipes placeholder="Search recipes..." />
       <article className="mt-10 mx-10">
         {/* Dynamic heading depending on search results or all recipes are shown */}
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-4xl font-semibold text-center">
           {query
             ? `${totalRecipes} search result${
                 totalRecipes === 1 ? '' : 's'

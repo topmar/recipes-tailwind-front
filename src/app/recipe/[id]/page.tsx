@@ -19,7 +19,7 @@ export default async function RecipeDetailPage({
     <main>
       {/* Page wrapper */}
       <div className="grid md:grid-cols-2 mx-3 sm:mx-10 xl:mx-56">
-        <h1 className="text-4xl md:text-5xl font-semibold my-10 md:col-span-2">
+        <h1 className="text-4xl text-center md:text-5xl font-semibold my-10 md:col-span-2">
           {recipe.name}
         </h1>
 
