@@ -11,10 +11,9 @@ const NavBar = () => {
   const pathname = usePathname()
   const { data: session } = useSession()
 
-
   return (
     <nav
-      className="bg-orange-400 p-2 border-b-2 border-b-orange-500"
+      className="bg-orange-400 p-2 border-b-2 border-b-orange-500 dark:bg-orange-700 dark:border-b-orange-800"
       aria-label="Main navigation"
     >
       <div className="container mx-auto flex justify-between items-end">
@@ -37,8 +36,8 @@ const NavBar = () => {
             <Link
               href="/"
               aria-label="Go to home page"
-              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 rounded-t-lg ${
-                pathname === '/' ? 'bg-orange-500' : ''
+              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 dark:hover:bg-orange-800 rounded-t-lg ${
+                pathname === '/' ? 'bg-orange-500 dark:bg-orange-800' : ''
               }`}
             >
               Home
@@ -48,8 +47,10 @@ const NavBar = () => {
             <Link
               href="/recipes"
               aria-label="View all recipes"
-              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 rounded-t-lg ${
-                pathname.includes('/recipes') ? 'bg-orange-500' : ''
+              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 dark:hover:bg-orange-800 rounded-t-lg ${
+                pathname.includes('/recipes')
+                  ? 'bg-orange-500 dark:bg-orange-800'
+                  : ''
               }`}
             >
               Recipes
