@@ -9,7 +9,6 @@ export async function fetchAllRecipes() {
   const limit = 50
   const res = await fetch(`${API_ENDPOINT}?limit=${limit}`)
   const data = await res.json()
-  console.log(data.total)
   return data.total // Total amount of recipes
 }
 

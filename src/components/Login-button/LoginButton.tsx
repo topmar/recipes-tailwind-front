@@ -13,7 +13,7 @@ const LoginButton = () => {
   const handleLogin = () => {
     sessionStorage.setItem('lastPage', pathname)
   }
-  console.log('Session data:', session)
+
   // Function to extract initials
   const getInitials = (name: string | null | undefined) => {
     if (!name) return '??'
