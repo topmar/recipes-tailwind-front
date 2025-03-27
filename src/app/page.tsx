@@ -44,7 +44,7 @@ export default function Home() {
         </h1>
         <Button
           onClick={handleGenerateRecipe}
-          className="mt-6 px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-2xl bg-orange-700/50 text-white rounded-xl shadow-xl transition-all hover:bg-orange-800/70 hover:scale-105"
+          className="mt-6 px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-2xl bg-orange-700/50 text-white rounded-xl shadow-xl transition-all hover:bg-orange-800/70 hover:scale-105 hover:cursor-pointer"
         >
           Give me some food. Click on me!
         </Button>

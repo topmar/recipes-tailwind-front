@@ -34,7 +34,11 @@ const LoginButton = () => {
           {getInitials(session.user?.name)}
         </AvatarFallback>
       </Avatar>
-      <Button variant="outline" onClick={() => signOut({ callbackUrl: '/' })}>
+      <Button
+        variant="outline"
+        className="hover:cursor-pointer"
+        onClick={() => signOut({ callbackUrl: '/' })}
+      >
         Log out
       </Button>
     </div>
@@ -46,7 +50,7 @@ const LoginButton = () => {
         className="hover:text-white"
         onClick={handleLogin}
       >
-        <Button variant="outline" className="w-full">
+        <Button variant="outline" className="w-full hover:cursor-pointer">
           Log in
         </Button>
       </Link>
