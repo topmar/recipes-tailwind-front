@@ -48,29 +48,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: '/login'
   }
-  // callbacks: {
-  //   session({ session, user }) {
-  //     return {
-  //       ...session,
-  //       user: {
-  //         ...session.user,
-  //         // id: user.id,
-  //         // name: user.name,
-  //         // email: user.email,
-  //         firstName: user.firstName,
-  //         lastName: user.lastName,
-  //         image: user.image
-  //       }
-  //     }
-
-  // if (user) {
-  //   session.user.image = user.image as string
-  //   session.user.id = user.id as string
-  //   session.user.name = user.name as string
-  //   session.user.firstName = user.firstName as string
-  //   session.user.lastName = user.lastName as string
-  // }
-  // return session
-  // }
-  // }
 })
