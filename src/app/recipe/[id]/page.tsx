@@ -21,14 +21,14 @@ export default async function RecipeDetailPage({
       {/* Page wrapper */}
       <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2">
         <div className="flex justify-between items-center md:col-span-2 my-10">
-          <h1 className="text-4xl text-center md:text-5xl font-semibold my-10 md:col-span-2">
+          <h1 className="text-4xl md:text-5xl font-semibold my-10 md:col-span-2">
             {recipe.name}
           </h1>
           <FavoriteButton recipeId={recipe.id} />
         </div>
 
         {/* Recipe info section */}
-        <section className="flex flex-col gap-10 p-5 md:p-10 bg-orange-50 dark:bg-orange-900 md:row-start-2 md:col-start-1">
+        <section className="flex flex-col gap-10 p-5 md:p-10 bg-orange-50 dark:bg-orange-900 md:row-start-2 md:col-start-1 h-fit">
           <RecipeInfo
             prepTimeMinutes={recipe.prepTimeMinutes}
             cookTimeMinutes={recipe.cookTimeMinutes}
@@ -50,7 +50,7 @@ export default async function RecipeDetailPage({
         </section>
 
         {/* Image */}
-        <figure className="w-full lg:max-w-xl h-full overflow-hidden">
+        <figure className="w-full overflow-hidden">
           <Image
             src={recipe.image}
             alt={recipe.name}

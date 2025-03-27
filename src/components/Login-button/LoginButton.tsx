@@ -24,7 +24,6 @@ const LoginButton = () => {
   }
 
   return session ? (
-    // <div className="flex items-center space-x-2">
     <div className="flex flex-col md:flex-row items-center space-y-2 md:space-x-2 md:space-y-0">
       <Avatar className="size-12 text-xl border-1 border-orange-700">
         <AvatarImage
@@ -37,7 +36,7 @@ const LoginButton = () => {
       </Avatar>
       <Button
         variant="outline"
-        className="w-full"
+        className="hover:cursor-pointer"
         onClick={() => signOut({ callbackUrl: '/' })}
       >
         Log out
@@ -48,10 +47,12 @@ const LoginButton = () => {
       <Link
         href="/login"
         aria-label="Log in"
-        className="hover:text-white pr-2"
+        className="hover:text-white"
         onClick={handleLogin}
       >
-        Log in
+        <Button variant="outline" className="w-full hover:cursor-pointer">
+          Log in
+        </Button>
       </Link>
     </div>
   )
