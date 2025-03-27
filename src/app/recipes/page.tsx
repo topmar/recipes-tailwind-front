@@ -50,7 +50,7 @@ const RecipesList = async ({
               } for ${query}`
             : 'All Recipes'}
         </h1>
-        <section className="flex justify-end mt-4">
+        <section className="flex justify-center sm:justify-end mt-4 max-w-[1200px] mx-auto">
           <SortDropdown />
         </section>
         <Suspense fallback={<LoadingSpinner />}>
