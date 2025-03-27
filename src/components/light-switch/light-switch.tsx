@@ -39,6 +39,7 @@ const LightSwitch = () => {
           <label
             htmlFor={id}
             className="peer-checked:bg-orange-500 rounded-sm p-1 cursor-pointer flex items-center justify-center"
+            aria-label={`Switch to ${id} mode`}
           >
             {icon}
           </label>
