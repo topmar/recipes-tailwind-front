@@ -22,7 +22,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         try {
           const user = await authenticateUser(username, password)
-          console.log(user)
 
           if (!user) {
             throw new Error('Invalid credentials')
@@ -48,7 +47,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.SECRET,
   pages: {
     signIn: '/login'
-  },
+  }
   // callbacks: {
   //   session({ session, user }) {
   //     return {
@@ -64,14 +63,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   //       }
   //     }
 
-      // if (user) {
-      //   session.user.image = user.image as string
-      //   session.user.id = user.id as string
-      //   session.user.name = user.name as string
-      //   session.user.firstName = user.firstName as string
-      //   session.user.lastName = user.lastName as string
-      // }
-      // return session
-    // }
+  // if (user) {
+  //   session.user.image = user.image as string
+  //   session.user.id = user.id as string
+  //   session.user.name = user.name as string
+  //   session.user.firstName = user.firstName as string
+  //   session.user.lastName = user.lastName as string
+  // }
+  // return session
+  // }
   // }
 })

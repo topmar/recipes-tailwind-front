@@ -19,7 +19,9 @@ const FavoriteButton = ({ recipeId }: FavoriteButtonProps) => {
     event.stopPropagation() // Prevents Link navigation
     setIsFavorite((prev) => {
       const newFavoriteState = !prev
-      const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '{}') as Record<string, boolean>
+      const savedFavorites = JSON.parse(
+        localStorage.getItem('favorites') || '{}'
+      ) as Record<string, boolean>
       savedFavorites[recipeId] = newFavoriteState
       localStorage.setItem('favorites', JSON.stringify(savedFavorites))
       return newFavoriteState
@@ -27,7 +29,11 @@ const FavoriteButton = ({ recipeId }: FavoriteButtonProps) => {
   }
 
   return (
-    <button onClick={handleToggleFavorite} className="text-red-500">
+    <button
+      onClick={handleToggleFavorite}
+      className="text-red-500"
+      aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+    >
       <Heart fill={isFavorite ? 'red' : 'none'} className="w-6 h-6" />
     </button>
   )

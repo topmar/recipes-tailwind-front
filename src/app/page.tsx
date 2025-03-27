@@ -57,7 +57,7 @@ export default function Home() {
           href={`/recipe/${recipeId}`}
           className="w-full max-w-5xl mt-6 transform transition duration-300 hover:scale-105"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 mx-3 sm:mx-10 xl:mx-20 bg-white rounded-lg overflow-hidden shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 mx-3 sm:mx-10 xl:mx-20 rounded-lg overflow-hidden shadow-lg bg-white">
             <figure className="w-full">
               <Image
                 src={recipe?.image || '/images/placeholder.jpg'}
@@ -68,12 +68,12 @@ export default function Home() {
                 priority
               />
             </figure>
-            <section className="flex flex-col p-4 sm:p-6 md:p-8 bg-orange-50">
+            <section className="flex flex-col p-4 sm:p-6 md:p-8 bg-orange-50 dark:bg-orange-950">
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">
                 {recipe?.name || 'Recipe Name'}
               </h2>
               <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
-              <span className="text-blue-600 underline hover:text-blue-800 transition-colors cursor-pointer">
+              <span className="text-blue-600 underline hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-500 transition-colors cursor-pointer">
                 Read More
               </span>
             </section>

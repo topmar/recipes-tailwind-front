@@ -12,8 +12,8 @@ const RecipeListCard = ({ recipe }: { recipe: Recipe }) => {
   const router = useRouter()
 
   return (
-    <Card 
-      className="py-0 max-w-96 justify-between h-full cursor-pointer" 
+    <Card
+      className="py-0 max-w-96 justify-between h-full cursor-pointer dark:bg-orange-950"
       onClick={() => router.push(`/recipe/${recipe.id}`)}
     >
       <Image

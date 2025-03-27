@@ -19,13 +19,16 @@ export default async function RecipeDetailPage({
   return (
     <main>
       {/* Page wrapper */}
-      <div className="grid md:grid-cols-2 mx-3 sm:mx-10 xl:mx-56">
+      <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2">
         <div className="flex justify-between items-center md:col-span-2 my-10">
-          <h1 className="text-4xl text-center md:text-5xl font-semibold my-10 md:col-span-2">{recipe.name}</h1>
+          <h1 className="text-4xl text-center md:text-5xl font-semibold my-10 md:col-span-2">
+            {recipe.name}
+          </h1>
           <FavoriteButton recipeId={recipe.id} />
         </div>
-        
-        <section className="flex flex-col gap-10 p-5 md:p-10 bg-orange-50 md:row-start-2 md:col-start-1">
+
+        {/* Recipe info section */}
+        <section className="flex flex-col gap-10 p-5 md:p-10 bg-orange-50 dark:bg-orange-900 md:row-start-2 md:col-start-1">
           <RecipeInfo
             prepTimeMinutes={recipe.prepTimeMinutes}
             cookTimeMinutes={recipe.cookTimeMinutes}
@@ -46,18 +49,22 @@ export default async function RecipeDetailPage({
           <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
         </section>
 
-        <figure className="w-full h-full md:col-start-2">
+        {/* Image */}
+        <figure className="w-full lg:max-w-xl h-full overflow-hidden">
           <Image
             src={recipe.image}
+            alt={recipe.name}
             width={500}
             height={500}
-            alt={recipe.name}
             className="w-full h-full object-cover"
             priority
           />
         </figure>
 
+        {/* Ingredients */}
         <IngredientsList ingredients={recipe.ingredients} />
+
+        {/* Instructions */}
         <Instructions instructions={recipe.instructions} />
       </div>
     </main>
