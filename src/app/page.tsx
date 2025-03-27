@@ -8,11 +8,13 @@ import { Recipe } from '@/lib/recipes/interfaces'
 import { getRandomRecipeId } from '@/lib/utils'
 import RecipeDescription from '@/components/recipe-description/recipe-description'
 import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
+import NewsletterSubscription from '@/components/newsletter/newsletter-subscription';
 
 export default function Home() {
   const [recipeId, setRecipeId] = useState<number | null>(null)
   const [recipe, setRecipe] = useState<Recipe | null>(null)
   const [loading, setLoading] = useState(false)
+  const [showNewsletter, setShowNewsletter] = useState(false)
 
   const handleGenerateRecipe = async () => {
     if (loading) return
@@ -78,6 +80,10 @@ export default function Home() {
           </div>
         </Link>
       )}
+      {showNewsletter && <NewsletterSubscription />}
+      <Button onClick={() => setShowNewsletter(true)} className="fixed bottom-0 left-0 w-full py-4 bg-blue-700 text-white text-lg font-semibold shadow-lg hover:bg-blue-800 transition-all">
+        Subscribe to Newsletter
+      </Button>
     </main>
   )
 }
