@@ -13,10 +13,10 @@ const NavBar = () => {
 
   return (
     <nav
-      className="bg-orange-400 p-2 border-b-2 border-b-orange-500 dark:bg-orange-700 dark:border-b-orange-800"
+      className="bg-orange-400 p-2 xl:px-8 border-b-2 border-b-orange-500 dark:bg-orange-700 dark:border-b-orange-800"
       aria-label="Main navigation"
     >
-      <div className="container mx-auto flex justify-between items-end">
+      <div className="mx-auto flex justify-between items-end">
         {/* mobile */}
         <div className="md:hidden">
           <HamburgerMenu />

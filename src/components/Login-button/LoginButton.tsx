@@ -24,7 +24,6 @@ const LoginButton = () => {
   }
 
   return session ? (
-    // <div className="flex items-center space-x-2">
     <div className="flex flex-col md:flex-row items-center space-y-2 md:space-x-2 md:space-y-0">
       <Avatar className="size-12 text-xl border-1 border-orange-700">
         <AvatarImage
@@ -35,11 +34,7 @@ const LoginButton = () => {
           {getInitials(session.user?.name)}
         </AvatarFallback>
       </Avatar>
-      <Button
-        variant="outline"
-        className="w-full"
-        onClick={() => signOut({ callbackUrl: '/' })}
-      >
+      <Button variant="outline" onClick={() => signOut({ callbackUrl: '/' })}>
         Log out
       </Button>
     </div>
@@ -48,10 +43,12 @@ const LoginButton = () => {
       <Link
         href="/login"
         aria-label="Log in"
-        className="hover:text-white pr-2"
+        className="hover:text-white"
         onClick={handleLogin}
       >
-        Log in
+        <Button variant="outline" className="w-full">
+          Log in
+        </Button>
       </Link>
     </div>
   )
