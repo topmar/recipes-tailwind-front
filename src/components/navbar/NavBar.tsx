@@ -57,9 +57,9 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
-        <span className="hidden md:block item-self-center">
+        <div className="hidden md:block self-center">
           <LoginButton />
-        </span>
+        </div>
       </div>
     </nav>
   )
