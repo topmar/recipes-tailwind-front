@@ -12,7 +12,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: 'Recipes App',
+  title: 'Awesome Recipes',
   description: 'Recipes app with tailwindcss'
 }
 
