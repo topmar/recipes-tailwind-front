@@ -13,7 +13,7 @@ three-week period.
   - Search recipes by name (or part of a name)
   - "Order by" dropdown to sort recipes (ascending, descending, or reset).
 - **Recipe Details (`/recipe/[id]`)**: View full details of a selected recipe.
-- **Authentication**: Basic authentication using NextAuth v5 beta.
+- **Authentication (`/login`)**: Basic authentication using NextAuth v5 beta.
 - **Responsive Design**: Styled with Tailwind CSS.
 - **Accessibility**: Tested with WAVE and Lighthouse.
 
