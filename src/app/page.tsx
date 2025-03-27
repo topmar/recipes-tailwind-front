@@ -8,7 +8,7 @@ import { Recipe } from '@/lib/recipes/interfaces'
 import { getRandomRecipeId } from '@/lib/utils'
 import RecipeDescription from '@/components/recipe-description/recipe-description'
 import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
-import NewsletterSubscription from '@/components/newsletter/newsletter-subscription';
+import NewsletterSubscription from '@/components/newsletter/newsletter-subscription'
 
 export default function Home() {
   const [recipeId, setRecipeId] = useState<number | null>(null)
@@ -81,13 +81,16 @@ export default function Home() {
         </Link>
       )}
       {showNewsletter && (
-      <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-        <div className="relative bg-white p-6 sm:p-8 rounded-lg shadow-xl w-11/12 max-w-md">
-          <NewsletterSubscription onClose={() => setShowNewsletter(false)} />
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="relative bg-white p-6 sm:p-8 rounded-lg shadow-xl w-11/12 max-w-md">
+            <NewsletterSubscription onClose={() => setShowNewsletter(false)} />
+          </div>
         </div>
-      </div>
-)}
-      <Button onClick={() => setShowNewsletter(true)} className="fixed bottom-0 left-0 w-full py-4 bg-blue-700 text-white text-lg font-semibold shadow-lg hover:bg-blue-800 transition-all">
+      )}
+      <Button
+        onClick={() => setShowNewsletter(true)}
+        className="fixed bottom-0 left-1/2 -translate-x-1/2 w-80 mx-auto bg-orange-950/40 text-white text-md font-semibold shadow-lg hover:bg-orange-900 transition-all z-1"
+      >
         Subscribe to Newsletter
       </Button>
     </main>

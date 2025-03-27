@@ -1,40 +1,40 @@
-import { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Mail, X } from "lucide-react"
+import { useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Mail, X } from 'lucide-react'
 
 export function NewsletterForm({ onClose }: { onClose: () => void }) {
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) {
-      setMessage("Please enter a valid email address.")
+      setMessage('Please enter a valid email address.')
       return
     }
 
     setLoading(true)
-    setMessage("")
+    setMessage('')
 
     try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
       })
 
       const data = await response.json()
       if (response.ok) {
-        setMessage("Subscribed successfully! Check your inbox.")
-        setEmail("")
+        setMessage('Subscribed successfully! Check your inbox.')
+        setEmail('')
       } else {
-        setMessage(data.error || "Failed to subscribe.")
+        setMessage(data.error || 'Failed to subscribe.')
       }
     } catch (error) {
-      setMessage("Something went wrong. Please try again.")
+      setMessage('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -42,8 +42,11 @@ export function NewsletterForm({ onClose }: { onClose: () => void }) {
 
   return (
     <Card className="fixed inset-0 flex items-center justify-center bg-black/50 p-4">
-      <CardContent className="bg-white max-w-md w-full p-6 shadow-lg rounded-2xl relative">
-        <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+      <CardContent className="bg-white dark:bg-black max-w-md w-full p-6 shadow-lg rounded-2xl relative">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+        >
           <X size={20} />
         </button>
         <div className="flex items-center space-x-2 mb-4">
@@ -59,9 +62,11 @@ export function NewsletterForm({ onClose }: { onClose: () => void }) {
             className="w-full"
           />
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Subscribing..." : "Subscribe"}
+            {loading ? 'Subscribing...' : 'Subscribe'}
           </Button>
-          {message && <p className="mt-2 text-center text-sm text-gray-600">{message}</p>}
+          {message && (
+            <p className="mt-2 text-center text-sm text-gray-600">{message}</p>
+          )}
         </form>
       </CardContent>
     </Card>
