@@ -16,7 +16,7 @@ const NavBar = () => {
       className="bg-orange-400 p-2 xl:px-8 border-b-2 border-b-orange-500 dark:bg-orange-700 dark:border-b-orange-800"
       aria-label="Main navigation"
     >
-      <div className="mx-auto flex justify-between items-end">
+      <div className="mx-auto flex justify-between items-center">
         {/* mobile */}
         <div className="md:hidden">
           <HamburgerMenu />
@@ -36,7 +36,7 @@ const NavBar = () => {
             <Link
               href="/"
               aria-label="Go to home page"
-              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 dark:hover:bg-orange-800 rounded-t-lg ${
+              className={`text-2xl p-4 hover:bg-orange-500 dark:hover:bg-orange-800 rounded-lg ${
                 pathname === '/' ? 'bg-orange-500 dark:bg-orange-800' : ''
               }`}
             >
@@ -47,7 +47,7 @@ const NavBar = () => {
             <Link
               href="/recipes"
               aria-label="View all recipes"
-              className={`text-2xl px-4 pb-2.5 pt-4 hover:bg-orange-500 dark:hover:bg-orange-800 rounded-t-lg ${
+              className={`text-2xl p-4 hover:bg-orange-500 dark:hover:bg-orange-800 rounded-lg ${
                 pathname.includes('/recipes')
                   ? 'bg-orange-500 dark:bg-orange-800'
                   : ''
