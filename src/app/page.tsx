@@ -39,14 +39,18 @@ export default function Home() {
     >
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="relative z-10 flex flex-col items-center">
-        <h1 className="w-screen text-center text-3xl sm:text-4xl lg:text-5xl font-semibold text-orange-900 drop-shadow-md px-4 py-6 bg-orange-700/70 -mt-4 sm:-mt-8">
-          Awesome Recipe App
+        <h1 className="w-screen text-center text-3xl sm:text-4xl text-white lg:text-5xl font-semibold drop-shadow-md px-4 py-6 mt-8">
+          Welcome to Awesome Recipes!
         </h1>
+        <p className="text-white text-lg text-center m-8 max-w-96">
+          We hope you enjoy our delicious recipes. Need some inpiration? Click
+          on the button to get a random recipe!
+        </p>
         <Button
           onClick={handleGenerateRecipe}
           className="mt-6 px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-2xl bg-orange-700/50 text-white rounded-xl shadow-xl transition-all hover:bg-orange-800/70 hover:scale-105 hover:cursor-pointer"
         >
-          Give me some food. Click on me!
+          Give me some food!
         </Button>
       </div>
       {loading && <LoadingSpinner />}
