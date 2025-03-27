@@ -10,7 +10,7 @@ three-week period.
 - **Home Page**: Click a button to get a random recipe.
 - **Recipe List (`/recipes`)**:
   - Displays a paginated list of cards.
-  - Search recipes by name (or part of a name) (`/search/[query]`)
+  - Search recipes by name (or part of a name)
   - "Order by" dropdown to sort recipes (ascending, descending, or reset).
 - **Recipe Details (`/recipe/[id]`)**: View full details of a selected recipe.
 - **Authentication**: Basic authentication using NextAuth v5 beta.
