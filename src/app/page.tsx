@@ -80,7 +80,13 @@ export default function Home() {
           </div>
         </Link>
       )}
-      {showNewsletter && <NewsletterSubscription onClose={() => setShowNewsletter(false)} />}
+      {showNewsletter && (
+      <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+        <div className="relative bg-white p-6 sm:p-8 rounded-lg shadow-xl w-11/12 max-w-md">
+          <NewsletterSubscription onClose={() => setShowNewsletter(false)} />
+        </div>
+      </div>
+)}
       <Button onClick={() => setShowNewsletter(true)} className="fixed bottom-0 left-0 w-full py-4 bg-blue-700 text-white text-lg font-semibold shadow-lg hover:bg-blue-800 transition-all">
         Subscribe to Newsletter
       </Button>
