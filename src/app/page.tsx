@@ -70,12 +70,12 @@ export default function Home() {
                 priority
               />
             </figure>
-            <section className="flex flex-col p-4 sm:p-6 md:p-8 bg-orange-50 dark:bg-orange-950">
+            <section className="flex flex-col gap-5 p-4 sm:p-6 md:p-8 bg-orange-50 dark:bg-orange-950">
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">
                 {recipe?.name || 'Recipe Name'}
               </h2>
               <RecipeDescription name={recipe.name} cuisine={recipe.cuisine} />
-              <span className="text-blue-600 underline hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-500 transition-colors cursor-pointer">
+              <span className="text-blue-600 underline hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-500 transition-colors cursor-pointer self-end">
                 Read More
               </span>
             </section>
