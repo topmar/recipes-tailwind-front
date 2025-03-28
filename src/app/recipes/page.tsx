@@ -1,9 +1,12 @@
 import { LoadingSpinner } from '@/components/loading-spinner/loading-spinner'
 import Recipes from '@/components/recipes'
-import { SearchInput } from '@/components/search-input/search-input'
-import { Button } from '@/components/ui/button'
+import { SearchRecipes } from '@/components/search/search-recipes'
 import SortDropdown from '@/components/ui/sort-dropdown'
-import { fetchRecipes } from '@/lib/recipes/actions'
+import {
+  fetchAllRecipes,
+  fetchRecipes,
+  fetchSearchResults
+} from '@/lib/recipes/actions'
 import { Suspense } from 'react'
 
 const RecipesList = async ({
@@ -20,15 +23,34 @@ const RecipesList = async ({
   const order = Array.isArray(params.order)
     ? params.order[0]
     : params.order || undefined
-  const recipes = fetchRecipes(page, limit, sortBy, order)
-  const totalRecipes = 50 // All recipes from DummyJSON
+
+  // query from search
+  const query = params.query ? String(params.query) : ''
+
+  let recipes
+  let totalRecipes
+
+  if (query) {
+    recipes = await fetchSearchResults(query, page, limit, sortBy, order) // Get search result based on query
+    totalRecipes = recipes.length
+  } else {
+    recipes = await fetchRecipes(page, limit, sortBy, order) // If no query, show all recipes
+    totalRecipes = await fetchAllRecipes()
+  }
 
   return (
     <>
-      <SearchInput />
-      <article className="mt-10 mx-10">
-        <h1 className="text-4xl font-bold">All Recipes</h1>
-        <section className="flex justify-end mt-4 mx-1">
+      <SearchRecipes placeholder="Search recipes..." />
+      <article className="mt-10 mx-auto p-2 xl:px-8 ">
+        {/* Dynamic heading depending on search results or all recipes are shown */}
+        <h1 className="text-4xl font-semibold text-center">
+          {query
+            ? `${totalRecipes} search result${
+                totalRecipes === 1 ? '' : 's'
+              } for ${query}`
+            : 'All Recipes'}
+        </h1>
+        <section className="flex justify-center sm:justify-end mt-4 max-w-[1200px] mx-auto">
           <SortDropdown />
         </section>
         <Suspense fallback={<LoadingSpinner />}>
@@ -38,6 +60,7 @@ const RecipesList = async ({
             totalRecipes={totalRecipes}
             sortBy={sortBy}
             order={order}
+            query={query}
           />
         </Suspense>
       </article>

@@ -8,15 +8,18 @@ const Recipes = async ({
   currentPage,
   totalRecipes,
   sortBy,
-  order
+  order,
+  query
 }: {
   recipes: Promise<Recipe[]>
   currentPage: number
   totalRecipes: number
   sortBy?: string
   order?: string
+  query?: string
 }) => {
   const allRecipes = await recipes
+
   const limit = 9
   const totalPages = Math.ceil(totalRecipes / limit)
 
@@ -32,13 +35,11 @@ const Recipes = async ({
     return `/recipes?${params.toString()}`
   }
   return (
-    <>
-      <ul className="flex flex-wrap justify-evenly gap-8 mt-4 mx-auto">
+    <div className="grid gap-10 justify-center mt-10 mx-3 sm:mx-10 xl:mx-20">
+      <ul className="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allRecipes.map((recipe) => (
           <li key={recipe.id}>
-            <Link href={`/recipe/${recipe.id}`}>
               <RecipeListCard recipe={recipe} />
-            </Link>
           </li>
         ))}
       </ul>
@@ -47,7 +48,7 @@ const Recipes = async ({
         totalPages={totalPages}
         createPageLink={createPageLink}
       />
-    </>
+    </div>
   )
 }
 

@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Awesome Recipes
 
-## Getting Started
+Awesome Recipes is a recipe app built with Next.js, Tailwind, and Shadcn. It
+allows users to browse, search, and sort recipes fetched from the DummyJSON API.
+The project was developed using an agile approach in a team of four over a
+three-week period.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Home Page**: Click a button to get a random recipe.
+- **Recipe List (`/recipes`)**:
+  - Displays a paginated list of cards.
+  - Search recipes by name (or part of a name)
+  - "Order by" dropdown to sort recipes (ascending, descending, or reset).
+- **Recipe Details (`/recipe/[id]`)**: View full details of a selected recipe.
+- **Authentication (`/login`)**: Basic authentication using NextAuth v5 beta.
+- **Newsletter signup**: Newsletter signup with Nodemailer.
+- **Theme toggle**: Theme change funtionality with Next Themes.
+- **Responsive Design**: Styled with Tailwind CSS.
+- **Accessibility**: Tested with WAVE and Lighthouse.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js (App Router)](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/),
+  [Shadcn](https://ui.shadcn.com/)
+- **Icons**: [Lucide](https://lucide.dev/)
+- **Authentication**: [NextAuth.js v5 (beta)](https://next-auth.js.org/)
+- **API**: [DummyJSON (Recipes)](https://dummyjson.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/topmar/recipes-tailwind-front.git
+   cd recipes-tailwind-front
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Set up environment variables: Create a `.env.local` file in the project root
+   and add the necessary variables for NextAuth:
 
-To learn more about Next.js, take a look at the following resources:
+   ```plaintext
+   AUTH_SECRET="your-secret-key"
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the development server:
+   ```sh
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development Workflow
 
-## Deploy on Vercel
+We followed an agile methodology with:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Prep Week**: Planning & setup.
+- **Sprint 1**: Initial feature development & UI structure.
+- **Sprint 2**: Enhancements, testing, and backlog refinement—where we
+  identified missing features, made necessary adjustments, and ensured the app
+  met our intended scope.
+- **Git Workflow**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+  - Feature branches for each task.
+  - Pull requests to the `dev` branch reviewed before merging.
+  - Regular commits to ensure continuity.
+  - At the end of each sprint, we merged into the `master` branch.
+
+  ## Contributors
+
+- **[Sandra Höst Kannerberg](https://github.com/SandraHKannerberg)**
+- **[Parvin Shafiee Matanagh](https://github.com/ParvinSha)**
+- **[Ann Mathenge](https://github.com/AnnMath)**
+- **[Marcin Topolski](https://github.com/topmar)**

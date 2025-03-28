@@ -6,8 +6,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-  SelectLabel
+  SelectValue
 } from '@/components/ui/select'
 import { ArrowDownAZ, ArrowUpAZ, RotateCcw } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -40,22 +39,23 @@ const SortDropdown = () => {
   return (
     <>
       <Select key={selectKey} onValueChange={(value) => handleChange(value)}>
-        <SelectTrigger className="w-28">
+        <SelectTrigger className="w-36" aria-label="Order by name">
           <SelectValue placeholder="Order by" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Name</SelectLabel>
             <SelectItem value="asc">
-              <ArrowDownAZ className="text-center" />
+              <span>Name A-Z</span>
+              <ArrowDownAZ />
             </SelectItem>
             <SelectItem value="desc">
+              <span>Name Z-A</span>
               <ArrowUpAZ />
             </SelectItem>
           </SelectGroup>
           <SelectGroup>
-            <SelectLabel>Reset</SelectLabel>
             <SelectItem value={'none'}>
+              <span>Reset</span>
               <RotateCcw />
             </SelectItem>
           </SelectGroup>

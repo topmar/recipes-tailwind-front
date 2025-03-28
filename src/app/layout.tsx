@@ -1,20 +1,18 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Lora } from 'next/font/google'
 import './globals.css'
 import NavBar from '../components/navbar/NavBar'
+import { SessionProvider } from 'next-auth/react'
+import Footer from '@/components/footer/footer'
+import { ThemeProvider } from '@/components/theme-provider'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin']
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const lora = Lora({
+  variable: '--font-lora',
   subsets: ['latin']
 })
 
 export const metadata: Metadata = {
-  title: 'Recipes App',
+  title: 'Awesome Recipes',
   description: 'Recipes app with tailwindcss'
 }
 
@@ -24,13 +22,21 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <NavBar />
-        {children}
-      </body>
-    </html>
+    <SessionProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${lora.variable} antialiased font-primary`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavBar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </SessionProvider>
   )
 }

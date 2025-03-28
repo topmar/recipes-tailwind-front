@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Separator } from '@/components/ui/separator'
+import LoginButton from '../Login-button/LoginButton'
 
 const HamburgerMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,7 +41,7 @@ const HamburgerMenu = () => {
       </div>
       <div
         className={cn(
-          'absolute top-17 left-0 w-40  shadow-lg p-5 flex flex-col items-center space-y-4 transform transition-transform z-50 bg-orange-50',
+          'absolute top-17 left-0 w-40  shadow-lg p-5 flex flex-col items-center space-y-4 transform transition-transform z-50 bg-orange-50 dark:bg-orange-900',
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -61,13 +62,9 @@ const HamburgerMenu = () => {
           Recipes
         </Link>
         <Separator />
-        <Link
-          href="/login"
-          className="text-xl"
-          aria-label="Log in to your account"
-        >
-          Log in
-        </Link>
+        <span onClick={closeMenu}>
+          <LoginButton />
+        </span>
       </div>
     </>
   )
