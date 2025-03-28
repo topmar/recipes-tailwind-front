@@ -14,6 +14,8 @@ three-week period.
   - "Order by" dropdown to sort recipes (ascending, descending, or reset).
 - **Recipe Details (`/recipe/[id]`)**: View full details of a selected recipe.
 - **Authentication (`/login`)**: Basic authentication using NextAuth v5 beta.
+- **Newsletter signup**: Newsletter signup with Nodemailer.
+- **Theme toggle**: Theme change funtionality with Next Themes.
 - **Responsive Design**: Styled with Tailwind CSS.
 - **Accessibility**: Tested with WAVE and Lighthouse.
 
@@ -62,7 +64,7 @@ We followed an agile methodology with:
 - **Git Workflow**:
 
   - Feature branches for each task.
-  - Pull requests reviewed before merging.
+  - Pull requests to the `dev` branch reviewed before merging.
   - Regular commits to ensure continuity.
   - At the end of each sprint, we merged into the `master` branch.
 
