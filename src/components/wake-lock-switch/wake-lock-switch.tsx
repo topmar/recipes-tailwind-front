@@ -52,6 +52,7 @@ const WakeLockSwitch = () => {
         onCheckedChange={(checked) => handleChange(checked)}
         disabled={disabled}
         id="toggle-cook-mode"
+        aria-label="toggle-cook-mode"
       />
 
       <label htmlFor="toggle-cook-mode">
